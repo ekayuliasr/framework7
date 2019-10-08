@@ -5,10 +5,7 @@ import {
   Navbar,
   NavLeft,
   NavTitle,
-  NavRight,
   Link,
-  Toolbar,
-  Block,
   Card,
   CardHeader,
   CardContent,
@@ -53,12 +50,9 @@ class HomePage extends Component {
             <Link iconIos="f7:menu" iconMd="material:menu" panelOpen="left"></Link>
           </NavLeft>
           <NavTitle>My App</NavTitle>
-          <NavRight>
-            <Link iconIos="f7:menu" iconMd="material:menu" panelOpen="right"></Link>
-          </NavRight>
         </Navbar>
         <List>
-          <ListItem link="/login/" title="login"></ListItem>
+          <ListItem link="/login/" title="Login"></ListItem>
         </List>
         <Row>
           {
@@ -82,10 +76,6 @@ class HomePage extends Component {
             }) : null
           }
         </Row>
-        <Toolbar bottom>
-          <Link>Left Link</Link>
-          <Link>Right Link</Link>
-        </Toolbar>
       </Page>
     );
 
