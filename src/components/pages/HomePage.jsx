@@ -19,7 +19,8 @@ class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: []
+      items: [],
+      limit: 15,
     };
   }
 
@@ -36,7 +37,9 @@ class HomePage extends Component {
       )))
       .then(items => this.setState({
         items,
-        isLoaded: false
+        isLoaded: false,
+        start: this.state.start,
+        limit: this.state.limit,
       }))
       .catch(err => console.log(err));
   }

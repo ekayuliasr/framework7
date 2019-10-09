@@ -16,6 +16,10 @@ img {
     box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.16);
 }
 
+.demo-card-header-pic:hover {
+    transform: translate(10px);
+}
+
 .page-content {
     background-color: mintcream;
 }
