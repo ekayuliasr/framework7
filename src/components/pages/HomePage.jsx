@@ -20,7 +20,6 @@ class HomePage extends Component {
     super(props);
     this.state = {
       items: [],
-      limit: 15,
     };
   }
 
@@ -35,13 +34,13 @@ class HomePage extends Component {
           price: `${data.price}`,
         }
       )))
-      .then(items => this.setState({
-        items,
-        isLoaded: false,
-        start: this.state.start,
-        limit: this.state.limit,
-      }))
-      .catch(err => console.log(err));
+      .then(res => {
+        console.log(res)
+        this.setState({
+          items: res.slice(0, 15),
+          isLoaded: false,
+        });
+      })
   }
 
   render() {
@@ -59,7 +58,7 @@ class HomePage extends Component {
         </List>
         <Row>
           {
-            items.length > 0 ? items.map(item => {
+            this.state.items.map(item => {
               const { image, title, price } = item;
               return (
                 <Col width="25">
@@ -76,7 +75,7 @@ class HomePage extends Component {
                   </Card>
                 </Col>
               );
-            }) : null
+            })
           }
         </Row>
       </Page>
