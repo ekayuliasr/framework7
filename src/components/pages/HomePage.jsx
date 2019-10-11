@@ -9,7 +9,6 @@ import {
   Card,
   CardHeader,
   CardContent,
-  CardFooter,
   Row,
   List,
   ListItem,
@@ -24,7 +23,7 @@ class HomePage extends Component {
   }
 
 
-  componentDidMount() {
+  getDataProduk() {
     fetch(`https://api.myjson.com/bins/b1n2v`)
       .then(res => res.json())
       .then(parsedJSON => parsedJSON.entities.map(data => (
@@ -43,8 +42,12 @@ class HomePage extends Component {
       })
   }
 
+  componentDidMount() {
+    this.getDataProduk();
+  }
+
+
   render() {
-    const { items } = this.state;
     return (
       <Page>
         <Navbar>
@@ -57,30 +60,21 @@ class HomePage extends Component {
           <ListItem link="/login/" title="Login"></ListItem>
         </List>
         <Row>
-          {
-            this.state.items.map(item => {
-              const { image, title, price } = item;
-              return (
-                <Col width="25">
-                  <Card className="demo-card-header-pic">
-                    <CardHeader><img src={image} ></img></CardHeader>
-                    <CardContent>
-                      <h1 className="text-title">{title}</h1>
-                      <p>Rp. {price}</p>
-                    </CardContent>
-                    <CardFooter>
-                      <Link>Like</Link>
-                      <Link>Read more</Link>
-                    </CardFooter>
-                  </Card>
-                </Col>
-              );
-            })
+          {this.state.items.map((item) => (
+            <Col width="20">
+              <Card className="demo-card-header-pic">
+                <CardHeader><img src={item.image} ></img></CardHeader>
+                <CardContent>
+                  <h1 className="text-title">{item.title}</h1>
+                  <p className="text-subtitle">Rp. {item.price}</p>
+                </CardContent>
+              </Card>
+            </Col>
+          ))
           }
         </Row>
       </Page>
     );
-
   }
 }
 

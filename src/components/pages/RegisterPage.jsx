@@ -2,11 +2,11 @@ import React from 'react';
 import {
     Page,
     List,
-    Navbar,
     ListInput,
+    Button,
     LoginScreenTitle,
-    Block,
-    Button
+    Navbar,
+    Block
 } from 'framework7-react';
 
 export default class extends React.Component {
@@ -15,15 +15,16 @@ export default class extends React.Component {
 
         this.state = {
             username: '',
+            email: '',
             password: '',
         };
     }
 
     render() {
         return (
-            <Page noToolbar noSwipeback loginScreen>
+            <Page noToolbar noNavbar noSwipeback loginScreen>
                 <Navbar backLink="Back"></Navbar>
-                <LoginScreenTitle>Login</LoginScreenTitle>
+                <LoginScreenTitle>Register</LoginScreenTitle>
                 <List form>
                     <ListInput
                         label="Username"
@@ -32,6 +33,15 @@ export default class extends React.Component {
                         value={this.state.username}
                         onInput={(e) => {
                             this.setState({ username: e.target.value });
+                        }}
+                    />
+                    <ListInput
+                        label="Email"
+                        type="email"
+                        placeholder="Your email"
+                        value={this.state.email}
+                        onInput={(e) => {
+                            this.setState({ email: e.target.value });
                         }}
                     />
                     <ListInput
@@ -45,20 +55,12 @@ export default class extends React.Component {
                     />
                 </List>
                 <List>
-                    <Block><Button raised fill round onClick={this.signIn.bind(this)}>Sign In</Button></Block>
                     <Block>
-                        <span>Dont' have an account? <Button raised fill round href="/register/">Sign Up</Button></span>
+                        <Button raised fill round>Sign Up</Button>
                     </Block>
                 </List>
             </Page>
         )
     }
-    signIn() {
-        const self = this;
-        const app = self.$f7;
-        const router = self.$f7router;
-        app.dialog.alert(`Username: ${self.state.username}<br>Password: ${self.state.password}`, () => {
-            router.back();
-        });
-    }
+
 }

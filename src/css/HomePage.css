@@ -2,11 +2,14 @@ img {
     margin-left: auto;
     margin-right: auto;
     padding-top: 20px;
+    padding-bottom: 20px;
+
 }
 
 .text-title {
     font-size: 20px;
     font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .demo-card-header-pic {
@@ -17,7 +20,7 @@ img {
 }
 
 .demo-card-header-pic:hover {
-    transform: translate(10px);
+    transform: translateY(10px);
 }
 
 .page-content {
